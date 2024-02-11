@@ -22,3 +22,10 @@ element_to_wait_for = wait.until(EC.presence_of_element_located((By.ID, "usernam
 
 driver.find_element(By.ID, 'username').send_keys(MY_EMAIL, Keys.TAB, MY_PASSWORD)
 driver.find_element(By.CLASS_NAME, 'btn__primary--large').click()
+
+wait = WebDriverWait(driver, 10)  # 10 seconds timeout
+element_to_wait_for = wait.until(EC.presence_of_element_located((By.CLASS_NAME, "jobs-apply-button")))
+
+driver.find_element(By.CLASS_NAME, 'jobs-apply-button').click()
+driver.find_element(By.CLASS_NAME, 'artdeco-text-input--input').send_keys('02382347982')
+
