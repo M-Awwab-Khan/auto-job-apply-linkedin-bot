@@ -50,4 +50,6 @@ for job in jobs:
     else:
         driver.find_element(By.CSS_SELECTOR, 'button.artdeco-button.artdeco-button--2.artdeco-button--primary.ember-view').click()
         driver.find_element(By.CSS_SELECTOR, 'button.artdeco-button.artdeco-button--2.artdeco-button--primary.ember-view').click()
-       
+        wait = WebDriverWait(driver, 10)  # 10 seconds timeout
+        element_to_wait_for = wait.until(EC.presence_of_element_located((By.CLASS_NAME, "artdeco-button__icon ")))
+        element_to_wait_for.click()
