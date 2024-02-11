@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
 
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_experimental_option('detach', True)
@@ -27,12 +28,19 @@ jobs = driver.find_elements(By.CLASS_NAME, 'jobs-search-results__list-item')
 
 for job in jobs:
     job.click()
-    wait = WebDriverWait(driver, 10)  # 10 seconds timeout
-    element_to_wait_for = wait.until(EC.presence_of_element_located((By.CLASS_NAME, "jobs-apply-button")))
+    try:
+        wait = WebDriverWait(driver, 5)  # 10 seconds timeout
+        job_button = wait.until(EC.presence_of_element_located((By.CLASS_NAME, "jobs-apply-button")))
+    except TimeoutException as e:
+        continue
+
     wait = WebDriverWait(driver, 5)  # 10 seconds timeout
-    element_to_wait_for = wait.until(EC.element_to_be_clickable((By.CLASS_NAME, "jobs-apply-button")))
-    element_to_wait_for.click()
-    driver.find_element(By.CLASS_NAME, 'artdeco-text-input--input').send_keys('02382347982')
+    job_button = wait.until(EC.element_to_be_clickable((By.CLASS_NAME, "jobs-apply-button")))
+    job_button.click()
+    wait = WebDriverWait(driver, 5)  # 10 seconds timeout
+    input_field = wait.until(EC.presence_of_element_located((By.CLASS_NAME, "jobs-apply-button")))
+    input_field.clear()
+    input_field.send_keys('02382347982')
 
     driver.find_element(By.CSS_SELECTOR, 'button.artdeco-button.artdeco-button--2.artdeco-button--primary.ember-view').click()
 
@@ -42,3 +50,4 @@ for job in jobs:
     else:
         driver.find_element(By.CSS_SELECTOR, 'button.artdeco-button.artdeco-button--2.artdeco-button--primary.ember-view').click()
         driver.find_element(By.CSS_SELECTOR, 'button.artdeco-button.artdeco-button--2.artdeco-button--primary.ember-view').click()
+       
