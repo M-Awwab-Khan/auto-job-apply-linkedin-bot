@@ -39,3 +39,6 @@ for job in jobs:
     if int(driver.find_element(By.CLASS_NAME, 'artdeco-completeness-meter-linear__progress-element').get_attribute('value')) < 50:
         driver.find_element(By.CLASS_NAME, 'artdeco-button__icon').click()
         driver.find_element(By.CSS_SELECTOR, 'button.artdeco-button.artdeco-button--2.artdeco-button--secondary.ember-view.artdeco-modal__confirm-dialog-btn').click()
+    else:
+        driver.find_element(By.CSS_SELECTOR, 'button.artdeco-button.artdeco-button--2.artdeco-button--primary.ember-view').click()
+        driver.find_element(By.CSS_SELECTOR, 'button.artdeco-button.artdeco-button--2.artdeco-button--primary.ember-view').click()
