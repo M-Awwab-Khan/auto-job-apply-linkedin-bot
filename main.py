@@ -29,3 +29,8 @@ element_to_wait_for = wait.until(EC.presence_of_element_located((By.CLASS_NAME, 
 driver.find_element(By.CLASS_NAME, 'jobs-apply-button').click()
 driver.find_element(By.CLASS_NAME, 'artdeco-text-input--input').send_keys('02382347982')
 
+driver.find_element(By.CSS_SELECTOR, 'button.artdeco-button.artdeco-button--2.artdeco-button--primary.ember-view').click()
+
+if int(driver.find_element(By.CLASS_NAME, 'artdeco-completeness-meter-linear__progress-element').get_attribute('value')) < 50:
+    driver.find_element(By.CLASS_NAME, 'artdeco-button__icon').click()
+    driver.find_element(By.CSS_SELECTOR, 'button.artdeco-button.artdeco-button--2.artdeco-button--secondary.ember-view.artdeco-modal__confirm-dialog-btn').click()
