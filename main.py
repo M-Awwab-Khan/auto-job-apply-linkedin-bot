@@ -8,8 +8,8 @@ from selenium.common.exceptions import TimeoutException
 chrome_options = webdriver.ChromeOptions()
 chrome_options.add_experimental_option('detach', True)
 
-MY_EMAIL = 'fakeofawwab@gmail.com'
-MY_PASSWORD = 'A?@pHN)PD.3uuzT'
+MY_EMAIL = 'YOUR EMAIL ADDRESS'
+MY_PASSWORD = 'YOUR LINKEDIN PASSWORD'
 
 driver = webdriver.Chrome(options=chrome_options)
 driver.get('https://www.linkedin.com/jobs/search/?currentJobId=3810377786&f_AL=true&geoId=102257491&keywords=python%20developer&location=London%2C%20England%2C%20United%20Kingdom&origin=JOB_SEARCH_PAGE_LOCATION_AUTOCOMPLETE&refresh=true')
