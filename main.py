@@ -20,3 +20,5 @@ signin.click()
 wait = WebDriverWait(driver, 10)  # 10 seconds timeout
 element_to_wait_for = wait.until(EC.presence_of_element_located((By.ID, "username")))
 
+driver.find_element(By.ID, 'username').send_keys(MY_EMAIL, Keys.TAB, MY_PASSWORD)
+driver.find_element(By.CLASS_NAME, 'btn__primary--large').click()
